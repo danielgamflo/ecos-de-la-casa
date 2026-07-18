@@ -66,6 +66,8 @@ a { color: inherit; }
 }
 .btn--dark { background: #000; color: #fff; }
 .btn--dark:hover { background: #fff; color: #000; }
+.btn--vivid { background: var(--vivid); color: #fff; }
+.btn--vivid:hover { background: var(--vivid-dark); }
 .btn--outline {
   margin-top: 48px;
   font-weight: 500;
@@ -221,7 +223,7 @@ a { color: inherit; }
   font-weight: 500;
   font-size: 13px;
   letter-spacing: 0.05em;
-  color: #000;
+  color: #fff;
   text-transform: uppercase;
   text-align: right;
 }
@@ -513,7 +515,13 @@ a { color: inherit; }
 .cta__bg {
   position: absolute;
   inset: -80px;
-  background: radial-gradient(ellipse 50% 65% at 30% 35%, rgba(0, 0, 0, 0.88), transparent 58%), var(--vivid);
+  background-image:
+    radial-gradient(ellipse 50% 65% at 30% 35%, rgba(0, 0, 0, 0.88), transparent 58%),
+    url('../assets/foto-footer.jpg');
+  background-size: auto, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-color: var(--vivid);
   will-change: transform;
 }
 
@@ -601,21 +609,53 @@ a { color: inherit; }
   color: rgba(255, 255, 255, 0.45);
 }
 
-.footer__links {
+/* ===== Floating CTA ===== */
+.floating-cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  background: var(--vivid);
+  color: #fff;
   font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.03em;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  line-height: 2.2;
-  display: flex;
-  flex-direction: column;
+  text-decoration: none;
+  padding: 16px 26px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.25s ease;
 }
+.floating-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.floating-cta:hover { background: var(--vivid-dark); }
 
-.footer__links a {
-  color: var(--vivid);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s;
-  width: fit-content;
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .hero__topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .hero__topbar .link-underline {
+    align-self: flex-end;
+  }
+  .hero__brand span {
+    display: block;
+    margin-top: 2px;
+  }
+  .floating-cta {
+    bottom: 16px;
+    right: 16px;
+    padding: 13px 20px;
+    font-size: 12px;
+  }
 }
-.footer__links a:hover { color: #fff; }

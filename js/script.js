@@ -73,3 +73,17 @@ const ticketsLabel = document.getElementById('ticketsLabel');
 
 if (ticketsFill) ticketsFill.style.width = `${pct}%`;
 if (ticketsLabel) ticketsLabel.textContent = `Entradas disponibles: ${ticketsLeft}/${ticketsTotal}`;
+
+// ===== Botón flotante "Comprar entrada" =====
+const floatingCta = document.getElementById('floatingCta');
+const heroSection = document.getElementById('hero');
+
+if (floatingCta && heroSection && 'IntersectionObserver' in window) {
+  const ctaObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      floatingCta.classList.toggle('is-visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+
+  ctaObserver.observe(heroSection);
+}
