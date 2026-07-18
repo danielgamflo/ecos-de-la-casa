@@ -151,10 +151,14 @@ a { color: inherit; }
 .hero__bg {
   position: absolute;
   inset: -80px;
-  background:
+  background-image:
     radial-gradient(ellipse 55% 70% at 68% 38%, rgba(0, 0, 0, 0.9), transparent 58%),
     radial-gradient(ellipse 40% 50% at 30% 75%, rgba(0, 0, 0, 0.7), transparent 60%),
-    var(--vivid);
+    url('../assets/hero-ecos-de-la-casa.jpg');
+  background-size: auto, auto, cover;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-color: var(--vivid);
   will-change: transform;
 }
 
@@ -182,20 +186,6 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .hero__brand span { opacity: 0.55; font-weight: 400; }
-
-.hero__phototag {
-  position: absolute;
-  top: 70px; left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.4);
-  padding: 5px 12px;
-  border-radius: 20px;
-  white-space: nowrap;
-  z-index: 1;
-}
 
 .hero__content {
   position: relative;
@@ -470,30 +460,15 @@ a { color: inherit; }
 
 .artist-visual {
   flex: 1 1 360px;
-  position: relative;
   height: 460px;
+  overflow: hidden;
 }
 
-.artist-visual__shape { position: absolute; }
-.artist-visual__shape--a {
-  top: 0; left: 0; width: 70%; height: 75%; z-index: 1;
-  background: radial-gradient(ellipse 60% 70% at 60% 30%, rgba(0, 0, 0, 0.85), transparent 60%), var(--vivid);
-}
-.artist-visual__shape--b {
-  bottom: 0; right: 0; width: 55%; height: 55%; z-index: 2;
-  background: radial-gradient(ellipse 60% 70% at 40% 60%, rgba(0, 0, 0, 0.8), transparent 55%), var(--vivid-dark);
-}
-
-.artist-visual__tag {
-  position: absolute;
-  bottom: 20px; left: 20px;
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 12px;
-  border-radius: 20px;
-  z-index: 3;
+.artist-visual__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===== Redes ===== */
