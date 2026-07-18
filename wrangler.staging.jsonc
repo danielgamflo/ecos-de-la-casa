@@ -1,0 +1,9 @@
+{
+  "name": "staging-ecos-de-la-casa",
+  "compatibility_date": "2024-09-23",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  }
+}

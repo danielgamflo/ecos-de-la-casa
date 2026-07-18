@@ -3,6 +3,7 @@
 .gitignore
 .assetsignore
 wrangler.jsonc
+wrangler.staging.jsonc
 *.dc.html
 .DS_Store
 node_modules
