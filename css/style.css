@@ -101,19 +101,6 @@ a { color: inherit; }
 }
 .link-underline:hover { border-color: #000; color: #000; }
 
-.link-underline-dark {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #000;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  transition: color 0.2s;
-}
-.link-underline-dark:hover { color: #fff; }
-
 .link-vivid {
   font-family: var(--font-display);
   font-weight: 600;
@@ -552,7 +539,7 @@ a { color: inherit; }
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
   gap: 20px;
   padding: clamp(40px, 7vw, 64px) var(--pad-section);
@@ -565,14 +552,14 @@ a { color: inherit; }
   margin-left: auto;
   margin-bottom: 8px;
   height: 2px;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   overflow: hidden;
 }
 
 .tickets__fill {
   height: 100%;
   width: 0%;
-  background: #000;
+  background: #fff;
   transition: width 1.2s ease-out;
 }
 
@@ -581,7 +568,7 @@ a { color: inherit; }
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.05em;
-  color: #000;
+  color: #fff;
   text-transform: uppercase;
 }
 
