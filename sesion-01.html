@@ -103,14 +103,17 @@
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">✕</button>
-    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Foto anterior">←</button>
     <figure class="lightbox__figure">
       <img id="lightboxImg" src="" alt="">
-      <figcaption class="lightbox__meta">
-        <span id="lightboxCaption"></span> <span class="lightbox__dot">·</span> <span id="lightboxCounter"></span>
-      </figcaption>
     </figure>
-    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Foto siguiente">→</button>
+    <div class="card-stack__controls">
+      <button class="card-stack__arrow" id="lightboxPrev" aria-label="Foto anterior">←</button>
+      <div class="card-stack__meta">
+        <p class="card-stack__caption" id="lightboxCaption"></p>
+        <span class="card-stack__counter" id="lightboxCounter"></span>
+      </div>
+      <button class="card-stack__arrow" id="lightboxNext" aria-label="Foto siguiente">→</button>
+    </div>
   </div>
 
   <script src="js/script.js"></script>
