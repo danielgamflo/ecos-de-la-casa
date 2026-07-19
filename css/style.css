@@ -719,7 +719,7 @@ a { color: inherit; }
   border-radius: 20px;
 }
 
-/* ===== Galería: cartas apiladas ===== */
+/* ===== Galería: rueda horizontal ===== */
 .card-stack {
   display: flex;
   flex-direction: column;
@@ -730,21 +730,37 @@ a { color: inherit; }
 .card-stack__viewport {
   position: relative;
   width: 100%;
-  max-width: 340px;
-  height: 420px;
+  max-width: 1000px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.card-stack__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .card-stack__card {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 280px;
-  height: 100%;
-  margin-left: -140px;
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 380px);
+  aspect-ratio: 3 / 4;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.35;
+  transform: scale(0.86);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-stack__card.is-active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .card-stack__card img {
@@ -760,7 +776,7 @@ a { color: inherit; }
   gap: 20px;
   margin-top: 32px;
   width: 100%;
-  max-width: 340px;
+  max-width: 420px;
 }
 
 .card-stack__arrow {
