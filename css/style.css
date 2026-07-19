@@ -489,6 +489,45 @@ a { color: inherit; }
   color: rgba(255, 255, 255, 0.45);
 }
 
+/* ===== Emprendimientos ===== */
+.schedule-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.schedule-item {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.schedule-item__time {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.schedule-item__label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Emprendimientos: fondo naranjo, texto oscuro */
+#emprendimientos.section--vivid .eyebrow--vivid { color: #000; }
+#emprendimientos.section--vivid .lede { color: rgba(0, 0, 0, 0.65); }
+#emprendimientos.section--vivid .schedule-list { border-top-color: rgba(0, 0, 0, 0.2); }
+#emprendimientos.section--vivid .schedule-item { border-bottom-color: rgba(0, 0, 0, 0.2); }
+#emprendimientos.section--vivid .schedule-item__label { color: rgba(0, 0, 0, 0.6); }
+
 /* ===== CTA final ===== */
 .cta {
   position: relative;
