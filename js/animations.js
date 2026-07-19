@@ -18,6 +18,8 @@ function wrapWords(el) {
           words.push(span);
         }
       });
+    } else if (node.tagName === 'BR') {
+      el.appendChild(node);
     } else {
       node.classList.add('word-anim');
       el.appendChild(node);
