@@ -75,4 +75,53 @@ if (track && viewport) {
   }, { passive: true });
 
   render();
+
+  // ===== Lightbox =====
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function updateLightbox() {
+    const photo = photos[currentIndex];
+    lightboxImg.src = photo.src;
+    lightboxImg.alt = photo.caption;
+    lightboxCaption.textContent = photo.caption;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
+    lightboxPrev.disabled = currentIndex === 0;
+    lightboxNext.disabled = currentIndex === photos.length - 1;
+  }
+
+  function openLightbox() {
+    updateLightbox();
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  track.addEventListener('click', (e) => {
+    const card = e.target.closest('.card-stack__card');
+    if (card && card.classList.contains('is-active')) openLightbox();
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxPrev.addEventListener('click', () => { goTo(currentIndex - 1); updateLightbox(); });
+  lightboxNext.addEventListener('click', () => { goTo(currentIndex + 1); updateLightbox(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft' && !lightboxPrev.disabled) { goTo(currentIndex - 1); updateLightbox(); }
+    if (e.key === 'ArrowRight' && !lightboxNext.disabled) { goTo(currentIndex + 1); updateLightbox(); }
+  });
 }
