@@ -7,7 +7,7 @@
     "not_found_handling": "404-page"
   },
   "routes": [
-    { "pattern": "ecosdelacasa.cl", "custom_domain": true },
-    { "pattern": "www.ecosdelacasa.cl", "custom_domain": true }
+    { "pattern": "ecosdelacasa.cl", "custom_domain": true, "zone_name": "ecosdelacasa.cl" },
+    { "pattern": "www.ecosdelacasa.cl", "custom_domain": true, "zone_name": "ecosdelacasa.cl" }
   ]
 }
