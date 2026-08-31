@@ -62,19 +62,7 @@ document.querySelectorAll('.faq-item__question').forEach((button) => {
   });
 });
 
-// ===== Contador de entradas =====
-const ticketsTotal = 150;
-const ticketsSold = 103;
-const ticketsLeft = ticketsTotal - ticketsSold;
-const pct = Math.round((ticketsSold / ticketsTotal) * 100);
-
-const ticketsFill = document.getElementById('ticketsFill');
-const ticketsLabel = document.getElementById('ticketsLabel');
-
-if (ticketsFill) ticketsFill.style.width = `${pct}%`;
-if (ticketsLabel) ticketsLabel.textContent = `Entradas disponibles: ${ticketsLeft}/${ticketsTotal}`;
-
-// ===== Botón flotante "Comprar entrada" =====
+// ===== Botón flotante =====
 const floatingCta = document.getElementById('floatingCta');
 const heroSection = document.getElementById('hero');
 

@@ -237,6 +237,23 @@ a { color: inherit; }
 }
 .lede--wide { max-width: 720px; margin-bottom: 0; }
 
+.intro-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 40px;
+  max-width: 720px;
+}
+.intro-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 600px) {
+  .intro-gallery { gap: 8px; }
+}
+
 .concept-grid {
   display: flex;
   flex-wrap: wrap;
@@ -586,29 +603,10 @@ a { color: inherit; }
 
 .tickets { text-align: right; }
 
-.tickets__bar {
-  max-width: 220px;
-  margin-left: auto;
-  margin-bottom: 8px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.3);
-  overflow: hidden;
-}
-
-.tickets__fill {
-  height: 100%;
-  width: 0%;
-  background: #fff;
-  transition: width 1.2s ease-out;
-}
-
-.tickets__label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  color: #fff;
-  text-transform: uppercase;
+.cta__teaser-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
 }
 
 /* ===== Footer ===== */
