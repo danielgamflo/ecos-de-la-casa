@@ -6,4 +6,5 @@ wrangler.jsonc
 wrangler.staging.jsonc
 *.dc.html
 .DS_Store
+._*
 node_modules
