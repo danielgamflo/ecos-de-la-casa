@@ -11,13 +11,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=1788551749">
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero__bg" data-parallax="hero"></div>
+    <div class="hero__bg" data-parallax="hero">
+      <div class="hero__bg-slide is-active" style="background-image: url('assets/hero/hero-01.jpg')"></div>
+      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-02.jpg')"></div>
+      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-03.jpg')"></div>
+      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-04.jpg')"></div>
+      <div class="hero__bg-gradient"></div>
+    </div>
     <div class="hero__shade"></div>
 
     <div class="hero__topbar">
@@ -39,12 +45,12 @@
   <section class="section section--dark reveal" id="porque">
     <div class="eyebrow eyebrow--vivid">El porqué</div>
     <h2 class="statement split-words">
-      No es un concierto de Alex <span class="dot">·</span>
+      No es un concierto <span class="dot">·</span>
       es un espacio que abrimos juntos <span class="dot">·</span>
       sin importar de qué iglesia vengas <span class="dot">·</span>
       sin artista y público, solo hermanos
     </h2>
-    <p class="lede stagger-item">Sesión 01. Una noche donde tu voz resuena en la de otros. Donde cada uno importa. Te invitamos a vivirla.</p>
+    <p class="lede stagger-item">Una noche donde tu voz resuena en la de otros. Donde cada uno importa. Así se siente cada sesión.</p>
 
     <div class="concept-grid">
       <div class="concept stagger-item">
@@ -71,27 +77,26 @@
     <p class="lede lede--wide stagger-item">Ecos de la Casa nace como un espacio de adoración en comunidad, pensado para reunir, sesión a sesión, a distintos cantantes cristianos de Latinoamérica. No es el proyecto de un solo artista — es una casa abierta que se construye entre todos los que se suman a cada encuentro. Cada sesión sumará nuevas voces, nuevas historias, y la misma búsqueda de adorar juntos.</p>
   </section>
 
-  <!-- QUIÉN ABRE ESTA SESIÓN -->
-  <section class="section section--dark reveal" id="anfitrion">
-    <div class="artist-layout">
-      <div class="artist-copy">
-        <div class="eyebrow eyebrow--vivid">Sesión 01</div>
-        <h2 class="section-title section-title--sm split-words">Quién abre<br>esta sesión</h2>
-        <p class="artist-bio stagger-item">Alex Caniulef es un artista cristiano chileno que busca transmitir mensajes de fe, esperanza y amor a través de canciones honestas y cercanas. Detrás de canciones como Imperfecto, Yo A Ti Te Amo y Dios No Está En Mi Contra, Alex abre la primera sesión de Ecos de la Casa, poniendo la primera piedra de este espacio que seguirá sumando nuevas voces con cada encuentro.</p>
-      </div>
-      <div class="artist-visual stagger-item">
-        <img class="artist-visual__photo" src="assets/foto-alex-vertical.jpg" alt="Alex Caniulef">
-      </div>
+  <!-- ÚLTIMA SESIÓN — este bloque se actualiza con cada nueva sesión -->
+  <section class="section section--dark reveal" id="ultima-sesion">
+    <div class="eyebrow eyebrow--vivid">Última sesión</div>
+    <h2 class="section-title section-title--tight split-words">Así fue la Sesión 01</h2>
+
+    <div class="video-placeholder stagger-item">
+      <div class="video-placeholder__play">▶</div>
+      <div class="video-placeholder__tag">Video resumen Sesión 01 · en edición</div>
     </div>
+
+    <div class="session-gallery stagger-item" id="sessionGallery"></div>
   </section>
 
   <!-- ESCUCHA EL EP -->
   <section class="section section--vivid reveal" id="ep">
     <div class="ep-layout">
       <div class="ep-intro">
-        <div class="mono-tag">Último sencillo</div>
+        <div class="mono-tag">El origen del nombre</div>
         <h2 class="section-title split-words">Escucha<br>el EP</h2>
-        <p class="ep-desc stagger-item">Grabado en los lugares más hermosos de Chile. Adoración en español que resuena.</p>
+        <p class="ep-desc stagger-item">Ecos de la Casa nació como un EP grabado en los lugares más hermosos de Chile. De ahí viene el nombre de este espacio.</p>
         <a class="btn btn--line-dark" href="https://open.spotify.com/intl-es/artist/5ZXn7vFAzmZ1ANS4mYHydl?si=EZutUpRTTTGnhy1St7zfTw" target="_blank" rel="noopener">Escuchar ahora</a>
       </div>
 
@@ -153,7 +158,7 @@
     <div class="eyebrow eyebrow--vivid">Voces</div>
     <div class="testimonial-grid">
       <blockquote class="testimonial stagger-item">
-        <p class="testimonial__quote">"Se nota que esto no es un show — es un grupo de gente cantando junta. Eso es lo que más espero de la Sesión 01."</p>
+        <p class="testimonial__quote">"Se nota que esto no es un show — es un grupo de gente cantando junta. Eso es lo que más viví en la Sesión 01."</p>
         <footer>
           <div class="testimonial__name">Javier M.</div>
           <div class="testimonial__context">Santiago</div>
@@ -181,24 +186,48 @@
     <h2 class="section-title section-title--tight split-words">Detalles que necesitas saber</h2>
 
     <div class="details-layout">
-      <div class="details-list">
-        <div class="detail stagger-item">
-          <div class="detail__label">Ubicación</div>
-          <p class="detail__text">Auditorio SOFOFA — Av. Andrés Bello 2777, Las Condes, Región Metropolitana.</p>
-          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d133629.40922815647!2d-70.75708940273437!3d-33.4146932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf423034f287%3A0xc1c472a051f865e2!2sSOFOFA!5e1!3m2!1ses!2scl!4v1783828518219!5m2!1ses!2scl" width="100%" height="150" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa Auditorio SOFOFA"></iframe>
-        </div>
-        <div class="detail stagger-item">
-          <div class="detail__label">Precio</div>
-          <p class="detail__text">Preventa: $10.000 · Entrada general: $15.000</p>
-        </div>
-        <div class="detail stagger-item">
-          <div class="detail__label">Capacidad</div>
-          <p class="detail__text">Máximo 150 personas — intentaremos guardar la intimidad.</p>
-        </div>
-      </div>
-
       <div class="faq stagger-item">
         <div class="detail__label">Preguntas frecuentes</div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>¿Es gratis o hay que comprar entrada?</span>
+            <span class="faq-item__mark">+</span>
+          </button>
+          <p class="faq-item__answer">Varía según la sesión. Te avisamos siempre por Instagram cuando esté disponible.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>¿Tengo que ir de alguna iglesia en particular?</span>
+            <span class="faq-item__mark">+</span>
+          </button>
+          <p class="faq-item__answer">No, es abierto a cualquier iglesia o trasfondo. Solo necesitas ganas de adorar junto a otros.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>¿Cómo me entero de la próxima sesión?</span>
+            <span class="faq-item__mark">+</span>
+          </button>
+          <p class="faq-item__answer">Síguenos en Instagram @ecosdelacasa, ahí anunciamos fecha y todos los detalles.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>¿Cómo tengo que ir vestido?</span>
+            <span class="faq-item__mark">+</span>
+          </button>
+          <p class="faq-item__answer">Como estés. El ambiente es relajado y cercano, como estar en una casa.</p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>¿Siempre toca el mismo artista?</span>
+            <span class="faq-item__mark">+</span>
+          </button>
+          <p class="faq-item__answer">No, cada sesión trae una voz distinta — el espacio va sumando artistas.</p>
+        </div>
 
         <div class="faq-item">
           <button class="faq-item__question" aria-expanded="false">
@@ -206,14 +235,6 @@
             <span class="faq-item__mark">+</span>
           </button>
           <p class="faq-item__answer">Sí, es apto para todas las edades. El ambiente es familiar e íntimo.</p>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__question" aria-expanded="false">
-            <span>¿Hay estacionamiento?</span>
-            <span class="faq-item__mark">+</span>
-          </button>
-          <p class="faq-item__answer">No, el lugar no cuenta con estacionamiento propio. Te recomendamos buscar opciones cercanas al Auditorio SOFOFA.</p>
         </div>
 
         <div class="faq-item">
@@ -237,15 +258,7 @@
             <span>¿Puedo comprar entrada el día del evento?</span>
             <span class="faq-item__mark">+</span>
           </button>
-          <p class="faq-item__answer">Preferentemente no. Compramos con antelación para cupo garantizado.</p>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__question" aria-expanded="false">
-            <span>¿Hay acceso para personas con discapacidad?</span>
-            <span class="faq-item__mark">+</span>
-          </button>
-          <p class="faq-item__answer">Sí, SOFOFA es accesible (ascensor y acceso sin escalones).</p>
+          <p class="faq-item__answer">Sí, pero dependerá de la disponibilidad de cupos ese día. Te recomendamos comprar con antelación para asegurar tu lugar.</p>
         </div>
       </div>
     </div>
@@ -270,37 +283,20 @@
     </div>
   </section>
 
-  <!-- EMPRENDIMIENTOS -->
-  <section class="section section--vivid reveal" id="emprendimientos">
-    <div class="eyebrow eyebrow--vivid">Antes y después</div>
-    <h2 class="section-title section-title--tight split-words">Emprendimientos de la Casa</h2>
-    <p class="lede lede--wide stagger-item">El lobby se abre también a emprendimientos cristianos que forman parte de esta comunidad. Un espacio para conocerlos, conversar, y llevarte algo a casa.</p>
-
-    <div class="schedule-list">
-      <div class="schedule-item stagger-item">
-        <span class="schedule-item__time">18:00 – 18:50</span>
-        <span class="schedule-item__label">Lobby abierto</span>
-      </div>
-      <div class="schedule-item stagger-item">
-        <span class="schedule-item__time">19:40 – 20:10</span>
-        <span class="schedule-item__label">Lobby abierto nuevamente</span>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA FINAL -->
   <section class="cta reveal" id="cta">
     <div class="cta__bg" data-parallax="cta"></div>
     <div class="cta__shade"></div>
 
     <div class="cta__content">
-      <h2 class="cta__title split-words">Gracias por vivir<br>la Sesión 01</h2>
+      <h2 class="cta__title split-words">Gracias<br>por vivir<br>la Sesión 01</h2>
+      <a class="btn btn--outline cta__recap-link" href="#ultima-sesion">Revive la Sesión 01 →</a>
     </div>
 
     <div class="cta__footer">
       <div class="tickets stagger-item">
         <p class="cta__teaser-text">Sesión 02 — fecha por confirmar.</p>
-        <a class="link-vivid" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Síguenos para ser el primero en saber</a>
+        <a class="btn btn--outline cta__follow-link" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Síguenos para ser el primero en saber</a>
       </div>
     </div>
   </section>
@@ -316,7 +312,22 @@
 
   <a class="floating-cta" id="floatingCta" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Sesión 02: entérate primero</a>
 
-  <script src="js/script.js"></script>
-  <script src="js/animations.js"></script>
+  <!-- LIGHTBOX GALERÍA ÚLTIMA SESIÓN -->
+  <div class="lightbox" id="sessionLightbox">
+    <button class="lightbox__close" id="sessionLightboxClose" aria-label="Cerrar">✕</button>
+    <figure class="lightbox__figure">
+      <img id="sessionLightboxImg" src="" alt="">
+    </figure>
+    <div class="card-stack__controls">
+      <button class="card-stack__arrow" id="sessionLightboxPrev" aria-label="Foto anterior">←</button>
+      <div class="card-stack__meta">
+        <span class="card-stack__counter" id="sessionLightboxCounter"></span>
+      </div>
+      <button class="card-stack__arrow" id="sessionLightboxNext" aria-label="Foto siguiente">→</button>
+    </div>
+  </div>
+
+  <script src="js/script.js?v=1788551749"></script>
+  <script src="js/animations.js?v=1788546222"></script>
 </body>
 </html>

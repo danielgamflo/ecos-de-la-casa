@@ -140,15 +140,27 @@ a { color: inherit; }
 .hero__bg {
   position: absolute;
   inset: -80px;
-  background-image:
-    radial-gradient(ellipse 55% 70% at 68% 38%, rgba(0, 0, 0, 0.9), transparent 58%),
-    radial-gradient(ellipse 40% 50% at 30% 75%, rgba(0, 0, 0, 0.7), transparent 60%),
-    url('../assets/hero-ecos-de-la-casa.jpg');
-  background-size: auto, auto, cover;
-  background-position: center, center, center;
-  background-repeat: no-repeat, no-repeat, no-repeat;
   background-color: var(--vivid);
   will-change: transform;
+}
+
+.hero__bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.hero__bg-slide.is-active { opacity: 1; }
+
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 55% 70% at 68% 38%, rgba(0, 0, 0, 0.9), transparent 58%),
+    radial-gradient(ellipse 40% 50% at 30% 75%, rgba(0, 0, 0, 0.7), transparent 60%);
 }
 
 .hero__shade {
@@ -236,6 +248,23 @@ a { color: inherit; }
   margin-bottom: 48px;
 }
 .lede--wide { max-width: 720px; margin-bottom: 0; }
+
+.session-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 32px;
+  cursor: pointer;
+}
+.session-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 700px) {
+  .session-gallery { grid-template-columns: repeat(3, 1fr); }
+}
 
 .intro-gallery {
   display: grid;
@@ -578,6 +607,7 @@ a { color: inherit; }
   position: relative;
   z-index: 1;
   padding: 0 var(--pad-section);
+  text-align: right;
 }
 
 .cta__title {
@@ -588,6 +618,15 @@ a { color: inherit; }
   letter-spacing: -0.01em;
   text-transform: uppercase;
   text-align: right;
+}
+
+.cta__recap-link {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.cta__follow-link {
+  margin-top: 0;
 }
 
 .cta__footer {
@@ -932,5 +971,8 @@ a { color: inherit; }
     width: 40px;
     height: 40px;
     font-size: 14px;
+  }
+  .footer {
+    padding-bottom: 96px;
   }
 }
