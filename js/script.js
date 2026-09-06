@@ -1,7 +1,7 @@
 // ===== Galería última sesión + lightbox =====
 const sessionGallery = document.getElementById('sessionGallery');
 if (sessionGallery) {
-  const sessionPhotoNums = ['01', '07', '10', '14', '18', '21', '24', '25', '33', '34'];
+  const sessionPhotoNums = ['01', '07', '09', '10', '14', '18', '21', '24', '25', '29', '33', '34'];
   const sessionPhotos = sessionPhotoNums.map((n) => `assets/sesion-01/galeria/foto-${n}.jpg`);
 
   sessionPhotos.forEach((src, i) => {
