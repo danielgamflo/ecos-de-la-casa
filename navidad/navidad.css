@@ -1,0 +1,245 @@
+@font-face {
+  font-family: 'Eighties Comeback';
+  src: url('/assets/navidad/fonts/EightiesComeback.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 50% 100%;
+  font-display: swap;
+}
+
+/* /navidad/ — escena de la sala: el scroll abre el sobre y sube la carta.
+   Paleta de la marca (Dani, 7-nov): gris #DCDCDA, rojo #BF4029, verde #2B5743, caramelo #D7A971; crema #FFFDFC es el papel del arte. Titulares: Eighties Comeback (solo titulos; botones y cajas siguen en Outfit). */
+.nv {
+  --red: #BF4029;
+  --green: #2B5743;
+  --caramel: #D7A971;
+  --gray: #DCDCDA;
+  --cream: #FFFDFC;
+  --ink: #4A2418;
+  --display: 'Eighties Comeback', Georgia, serif;
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.nv-back {
+  position: fixed; top: 14px; left: 14px; z-index: 50;
+  padding: 9px 14px; border-radius: 999px;
+  background: rgba(20, 8, 4, 0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: #fff; text-decoration: none;
+  font: 500 12px/1 'Outfit', sans-serif; letter-spacing: 0.06em;
+}
+
+/* ===== Escena =====
+   Sala sola -> entra el sobre cerrado -> con el scroll la solapa gira (3D) y la carta sube -> sigue la pagina.
+   Las piezas salen de Psd/Carta.psd: todas comparten un lienzo de 1271 x 1483 px. --u = 1 px de ese lienzo. */
+.nv-stage { height: 100svh; position: relative; background: #1c0d09; }
+html.nv-anim .nv-stage { height: 360svh; }
+
+/* lvh: en el celular la barra del navegador se esconde al scrollear; con svh quedaba una franja blanca bajo la escena */
+.nv-sticky { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; background: #1c0d09; }
+
+.nv-room, .nv-shade { position: absolute; inset: 0; }
+.nv-room { inset: -3%; }   /* la foto trae un borde de pelicula oscuro: se recorta hacia afuera */
+.nv-room {
+  background: url('/assets/navidad/sala-2.jpg') center / cover no-repeat;
+  animation: nv-lights 1.6s ease-out both;
+}
+.nv-shade { background: radial-gradient(ellipse at 50% 45%, transparent 40%, rgba(20, 6, 2, 0.55) 100%); }
+
+/* El sobre entra desde abajo (animacion de tiempo); la camara y las piezas las mueve el JS con el scroll */
+.nv-wrap {
+  position: absolute; inset: 0 0 auto 0; height: 100svh; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  animation: nv-rise 1.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.7s both;
+}
+.nv-sobre {
+  --w: min(94vw, calc(84svh * 1271 / 1483));
+  --u: calc(var(--w) / 1271);
+  position: relative; flex: none;
+  width: var(--w); height: calc(var(--u) * 1483);
+  perspective: calc(var(--u) * 3200);
+  will-change: transform;
+}
+/* sombra suave en el piso, detras del sobre */
+.nv-sobre::before {
+  content: ''; position: absolute; z-index: -1;
+  left: calc(var(--u) * 60); width: calc(var(--u) * 1150);
+  top: calc(var(--u) * 1380); height: calc(var(--u) * 200);
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.5), transparent 68%);
+}
+.nv-sobre img { position: absolute; display: block; max-width: none; user-select: none; -webkit-user-drag: none; }
+.nv-p--fondo  { z-index: 0; left: calc(var(--u) * 13); top: calc(var(--u) * 591); width: calc(var(--u) * 1247); height: calc(var(--u) * 879); }
+.nv-p--carta  { z-index: 2; left: calc(var(--u) * 53); top: calc(var(--u) * 642); width: calc(var(--u) * 1165); height: calc(var(--u) * 774); will-change: transform; }
+.nv-p--sombra { z-index: 3; left: calc(var(--u) * 13); top: calc(var(--u) * 590); width: calc(var(--u) * 1224); height: calc(var(--u) * 392); }
+.nv-p--frente { z-index: 4; left: calc(var(--u) * 13); top: calc(var(--u) * 594); width: calc(var(--u) * 1247); height: calc(var(--u) * 876); }
+/* sombra que la tapa cerrada deja sobre el sobre: la misma silueta de la solapa, desenfocada y corrida hacia abajo; se aclara y baja al levantarse */
+.nv-sombratapa {
+  position: absolute; z-index: 4; pointer-events: none;
+  left: calc(var(--u) * 15); top: calc(var(--u) * 587); width: calc(var(--u) * 1239); height: calc(var(--u) * 584);
+  filter: blur(calc(var(--u) * 11)); opacity: 0.62; transform: translateY(calc(var(--u) * 18));
+}
+.nv-sombratapa i { display: block; width: 100%; height: 100%; background: #1a0502; -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+
+/* Puente de papel bajo la bisagra: rellena la costura entre la solapa abierta y el fondo del sobre
+   (sin esto se ve una linea clara con el cuarto detras al girar o con la solapa ya abierta) */
+.nv-puente {
+  position: absolute; z-index: 1; display: block;
+  left: calc(var(--u) * 22); width: calc(var(--u) * 1230); top: calc(var(--u) * 586); height: calc(var(--u) * 16);
+  background: #ad0e0e;
+}
+/* Solapa: un solo objeto con dos caras que gira sobre el borde de arriba del sobre (la bisagra, y = 590) */
+.nv-flap {
+  position: absolute; z-index: 5;
+  left: calc(var(--u) * 13); top: calc(var(--u) * 590); width: calc(var(--u) * 1247); height: 0;
+  transform-style: preserve-3d; transform-origin: 50% 0; will-change: transform;
+}
+.nv-flap__c, .nv-flap__a { position: absolute; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.nv-flap__c img, .nv-flap__a img { position: static; width: 100%; height: 100%; }
+/* oscurecimiento al girar: una capa negra con la forma exacta de la solapa (sin filter, que rompe el 3D) */
+.nv-flap__shade { position: absolute; inset: 0; background: #1a0502; opacity: 0; -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.nv-flap__c { left: calc(var(--u) * 2); top: calc(var(--u) * -3); width: calc(var(--u) * 1239); height: calc(var(--u) * 584); }
+.nv-flap__a {
+  left: calc(var(--u) * 1); top: calc(var(--u) * -3); width: calc(var(--u) * 1238); height: calc(var(--u) * 582);
+  transform: rotateX(180deg);   /* misma posicion que la cerrada, pero de espaldas: al girar la solapa 180 grados queda de frente y hacia arriba */
+}
+
+.nv-hero-ui {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 0 var(--pad-section) max(28px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  animation: nv-fade 0.9s ease 2.3s backwards;
+}
+.nv-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.nv-actions .btn { margin-top: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; }
+.nv-hint { color: rgba(255, 255, 255, 0.8); font: 500 11px/1 'Outfit', sans-serif; letter-spacing: 0.18em; text-transform: uppercase; }
+
+@keyframes nv-lights { from { filter: brightness(0.15); } to { filter: brightness(1); } }
+@keyframes nv-rise { from { opacity: 0; transform: translateY(75svh); } to { opacity: 1; transform: none; } }
+@keyframes nv-fade { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 699px) {
+  .nv-room { background-position: 72% 50%; }
+  .nv-hero-ui { padding-bottom: max(96px, calc(env(safe-area-inset-bottom) + 72px)); }
+  .nv-actions { flex-direction: column; align-self: stretch; }
+  .nv-actions .btn { text-align: center; }
+}
+
+/* ===== Secciones ===== */
+.nv-sec { padding: clamp(72px, 12vw, 140px) var(--pad-section); position: relative; }
+.nv-sec > * { max-width: 920px; }
+.nv-sec--cream { background: var(--cream); color: var(--ink); }
+.nv-sec--red { background: var(--red); color: var(--cream); }
+.nv-sec--photo {
+  color: var(--cream); background-color: #1c0d09; overflow: hidden;
+  min-height: 80svh; display: flex; flex-direction: column; justify-content: center;
+}
+/* Fondo con parallax: la capa es mas alta que la seccion y el JS la desplaza mas lento que el texto.
+   La foto va a tamaño casi natural (cover), sin ampliarla: solo se oscurece a la izquierda para leer el texto. */
+.nv-pbg {
+  position: absolute; left: 0; right: 0; top: -16%; bottom: -16%; z-index: 0; max-width: none;
+  background:
+    linear-gradient(90deg, rgba(28, 8, 3, 0.82) 0%, rgba(28, 8, 3, 0.6) 50%, rgba(28, 8, 3, 0.5) 100%),
+    url('/assets/navidad/casa/guitarra.webp') 0% 55% / 125% auto no-repeat;
+  filter: saturate(0.85);
+  will-change: transform;
+}
+.nv-sec--photo > *:not(.nv-pbg) { position: relative; z-index: 1; }
+@media (max-width: 699px) {
+  .nv-pbg {
+    background:
+      linear-gradient(180deg, rgba(28, 8, 3, 0.78), rgba(28, 8, 3, 0.55)),
+      url('/assets/navidad/casa/guitarra.webp') 52% 55% / cover no-repeat;
+  }
+}
+
+.nv-eyebrow { font: 600 12px/1 'Outfit', sans-serif; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 26px; color: var(--red); }
+.nv-sec--red .nv-eyebrow { color: var(--cream); }
+.nv-sec--photo .nv-eyebrow { color: var(--caramel); }
+
+.nv-title {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(48px, 10vw, 116px); line-height: 0.96; letter-spacing: -0.005em;
+  color: var(--red); margin-bottom: 32px;
+}
+.nv-sec--red .nv-title, .nv-sec--photo .nv-title { color: var(--cream); }
+
+.nv-lede { font-size: clamp(17px, 2.2vw, 22px); line-height: 1.55; max-width: 34em; margin-bottom: 36px; }
+
+.nv-facts { display: flex; flex-wrap: wrap; gap: 28px 48px; border-top: 1px solid rgba(191, 64, 41, 0.35); padding-top: 28px; }
+.nv-facts dt { font: 600 11px/1 'Outfit', sans-serif; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.nv-facts dd { font-weight: 500; font-size: clamp(18px, 2.6vw, 24px); }
+
+.nv-btn { background: var(--cream); color: var(--red); border: 0; font-weight: 600; letter-spacing: 0.08em; }
+
+.nv-faq { max-width: 720px; margin-top: 8px; }
+.nv .faq-item { border-bottom-color: rgba(191, 64, 41, 0.35); padding: 20px 0; }
+.nv .faq-item__question { font-family: 'Outfit', sans-serif; font-size: 17px; color: var(--ink); }
+.nv .faq-item__mark { color: var(--red); font-size: 22px; }
+.nv .faq-item__answer { font-size: 16px; color: rgba(74, 36, 24, 0.8); }
+
+.nv-footer { background: #1c0d09; color: rgba(255, 255, 255, 0.75); padding: 40px var(--pad-section); font-size: 13px; display: flex; flex-direction: column; gap: 8px; }
+.nv-footer__brand { font-weight: 600; font-size: 16px; color: #fff; }
+
+/* Entrada suave al hacer scroll */
+.nv-in > * { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.nv-in.is-in > * { opacity: 1; transform: none; }
+.nv-in.is-in > *:nth-child(2) { transition-delay: 0.08s; }
+.nv-in.is-in > *:nth-child(3) { transition-delay: 0.16s; }
+.nv-in.is-in > *:nth-child(4) { transition-delay: 0.24s; }
+.nv-in > .nv-pbg, .nv-in.is-in > .nv-pbg { opacity: 1; transition: none; transition-delay: 0s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nv-room, .nv-wrap, .nv-hero-ui { animation: none; }
+  .nv-in > * { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* Entradas: precios */
+.nv-tickets { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+.nv-ticket { flex: 1 1 180px; max-width: 260px; border: 1px solid rgba(255, 253, 252, 0.7); border-radius: 6px; padding: 18px 20px; }
+.nv-ticket__name { font: 600 12px/1 'Outfit', sans-serif; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.nv-ticket__price { font: 600 34px/1 'Outfit', sans-serif; margin-bottom: 8px; }
+.nv-ticket__note { font-size: 14px; opacity: 0.85; }
+.nv .faq-item__answer a { color: var(--red); text-underline-offset: 3px; }
+
+/* Polaroids: fotos chicas de la casa, para sumar sin recargar. Se mueven un poco distinto al texto (parallax suave) */
+.nv-polas { display: flex; gap: 16px; margin-top: 48px; max-width: none; }
+.nv-polas--solo { margin-top: 40px; }
+.nv-pola {
+  margin: 0; flex: none; width: clamp(140px, 38vw, 220px);
+  background: var(--cream); padding: 9px 9px 34px;
+  box-shadow: 0 18px 36px rgba(20, 6, 2, 0.32), 0 2px 6px rgba(20, 6, 2, 0.22);
+  transform: translateY(var(--dy, 0px)) rotate(var(--rot, 0deg));
+  will-change: transform;
+}
+.nv-pola img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; filter: saturate(0.88); }
+.nv-sec--cream .nv-pola { box-shadow: 0 14px 28px rgba(74, 36, 24, 0.22), 0 2px 5px rgba(74, 36, 24, 0.16); }
+@media (min-width: 1100px) {
+  #entradas, #detalles { overflow: hidden; }
+  .nv-polas {
+    --pw: clamp(230px, 21vw, 340px);
+    position: absolute; top: 0; bottom: 0; right: clamp(40px, 6vw, 120px); width: calc(var(--pw) + 70px); margin: 0;
+    flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  }
+  .nv-pola { width: var(--pw); padding: 11px 11px 42px; }
+  .nv-pola--2 { margin-top: calc(var(--pw) * -0.16); margin-left: calc(var(--pw) * 0.2); }
+  .nv-sec--photo > .nv-polas { position: absolute; z-index: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .nv-pola { transform: rotate(var(--rot, 0deg)); } }
+
+/* Boton de compra fijo */
+.nv-buy {
+  position: fixed; z-index: 49; right: 20px; bottom: max(20px, env(safe-area-inset-bottom));
+  padding: 15px 24px; border-radius: 999px;
+  background: var(--green); color: var(--cream); text-decoration: none;
+  font: 600 13px/1 'Outfit', sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+  box-shadow: 0 10px 26px rgba(20, 6, 2, 0.35), 0 2px 6px rgba(20, 6, 2, 0.25);
+  opacity: 0; visibility: hidden; transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s, background 0.2s ease;
+}
+.nv-buy.is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.nv-buy:hover { background: #1F4132; }
+@media (max-width: 699px) {
+  .nv-buy { left: 16px; right: 16px; text-align: center; padding: 17px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .nv-buy { transition: none; } }

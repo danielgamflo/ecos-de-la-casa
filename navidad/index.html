@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- noindex mientras sea borrador: quitar al lanzar -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1c0d09">
+<title>Ecos de Navidad — Ecos de la Casa</title>
+<meta name="description" content="Ecos de Navidad, una casa, una navidad. Un especial de Ecos de la Casa. Sábado 5 de diciembre, 18:00 hrs, Auditorio Sucre.">
+<link rel="icon" type="image/png" href="/assets/favicon-edlc.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ecos de Navidad — Ecos de la Casa">
+<meta property="og:description" content="Una casa, una navidad. Un especial de Ecos de la Casa. Sábado 5 de diciembre.">
+<meta property="og:image" content="https://ecosdelacasa.cl/assets/navidad/banner-vertical.jpg">
+<meta property="og:url" content="https://ecosdelacasa.cl/navidad/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/navidad/sala-2.jpg">
+<link rel="preload" as="image" href="/assets/navidad/sobre/frente.webp">
+<link rel="preload" as="font" type="font/ttf" href="/assets/navidad/fonts/EightiesComeback.ttf" crossorigin>
+<link rel="stylesheet" href="/css/style.css?v=1794030000">
+<link rel="stylesheet" href="/navidad/navidad.css?v=29">
+</head>
+<body class="nv">
+
+  <a class="nv-back" href="/">← Ecos de la Casa</a>
+
+  <!-- Boton fijo: aparece cuando termina la escena del sobre y se esconde en la seccion de entradas (ahi ya hay uno) -->
+  <a class="nv-buy" id="nvBuy" href="https://www.passline.com/eventos/ecos-de-navidad" target="_blank" rel="noopener">Comprar entrada</a>
+
+  <!-- ESCENA: la sala sola, entra el sobre cerrado; con el scroll se abre la solapa y sube la carta. Luego la página sigue normal -->
+  <div class="nv-stage" id="stage">
+    <div class="nv-sticky">
+      <div class="nv-room" id="room"></div>
+      <div class="nv-shade"></div>
+      <div class="nv-wrap">
+        <div class="nv-sobre" id="sobre" role="img" aria-label="Un sobre rojo que se abre y deja ver la invitación a Ecos de Navidad: una casa, una navidad.">
+          <img class="nv-p--fondo" src="/assets/navidad/sobre/fondo.webp" width="1247" height="879" alt="" decoding="async">
+          <i class="nv-puente" aria-hidden="true"></i>
+          <div class="nv-flap" id="flap">
+            <div class="nv-flap__c">
+              <img src="/assets/navidad/sobre/solapa-cerrada.webp" width="1239" height="584" alt="" decoding="async">
+              <i class="nv-flap__shade" style="-webkit-mask-image:url(/assets/navidad/sobre/solapa-cerrada.webp);mask-image:url(/assets/navidad/sobre/solapa-cerrada.webp)"></i>
+            </div>
+            <div class="nv-flap__a">
+              <img src="/assets/navidad/sobre/solapa-abierta.webp" width="1238" height="582" alt="" decoding="async">
+              <i class="nv-flap__shade" style="-webkit-mask-image:url(/assets/navidad/sobre/solapa-abierta.webp);mask-image:url(/assets/navidad/sobre/solapa-abierta.webp)"></i>
+            </div>
+          </div>
+          <img class="nv-p--carta" id="carta" src="/assets/navidad/sobre/carta.webp" width="1165" height="774" alt="" decoding="async">
+          <img class="nv-p--sombra" src="/assets/navidad/sobre/sombra.webp" width="1224" height="392" alt="" decoding="async">
+          <img class="nv-p--frente" src="/assets/navidad/sobre/frente.webp" width="1247" height="876" alt="" decoding="async">
+          <div class="nv-sombratapa" id="sombraTapa"><i style="-webkit-mask-image:url(/assets/navidad/sobre/solapa-cerrada.webp);mask-image:url(/assets/navidad/sobre/solapa-cerrada.webp)"></i></div>
+        </div>
+      </div>
+      <div class="nv-hero-ui" id="heroUi">
+        <h1 class="visually-hidden">Ecos de Navidad</h1>
+        <div class="nv-actions">
+          <a class="btn btn--vivid" href="https://www.passline.com/eventos/ecos-de-navidad" target="_blank" rel="noopener">Comprar entrada</a>
+          <a class="btn btn--outline" href="#invitacion">Conocer más</a>
+        </div>
+        <div class="nv-hint" aria-hidden="true">Desliza ↓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LA INVITACIÓN -->
+  <section class="nv-sec nv-sec--cream nv-in" id="invitacion">
+    <div class="nv-eyebrow">La invitación</div>
+    <h2 class="nv-title">Una casa,<br>una navidad</h2>
+    <p class="nv-lede">Un especial de Navidad de Ecos de la Casa. Una tarde para celebrar a Jesús como en casa: cantando, celebrando y compartiendo. Trae a tu familia y a tus amigos.</p>
+    <dl class="nv-facts">
+      <div><dt>Cuándo</dt><dd>Sábado 5 de diciembre, 18:00 hrs</dd></div>
+      <div><dt>Dónde</dt><dd>Auditorio Sucre, Ñuñoa</dd></div>
+      <div><dt>Aforo</dt><dd>Solo 100 asientos</dd></div>
+    </dl>
+  </section>
+
+  <!-- QUIÉNES TOCAN -->
+  <section class="nv-sec nv-sec--photo nv-in" id="quienes">
+    <div class="nv-pbg" id="pbg" aria-hidden="true"></div>
+    <div class="nv-eyebrow">Quiénes tocan</div>
+    <h2 class="nv-title">Alex Caniulef<br>y dos invitados</h2>
+    <p class="nv-lede">Alex Caniulef estará acompañado por Nico Araya en piano y Brian Hernández en guitarra eléctrica. Canciones cristianas en español y clásicos navideños.</p>
+    <div class="nv-polas nv-polas--solo" aria-hidden="true">
+      <figure class="nv-pola" style="--rot:-3deg" data-drift="30"><img src="/assets/navidad/casa/pola-alex-guitarra.webp" width="720" height="720" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <!-- ENTRADAS -->
+  <section class="nv-sec nv-sec--red nv-in" id="entradas">
+    <div class="nv-eyebrow">Entradas</div>
+    <h2 class="nv-title">Asegura<br>tu entrada</h2>
+    <p class="nv-lede">Sábado 5 de diciembre, 18:00 hrs. Aforo reducido: asientos para solo 100 personas. Asegura tu entrada antes de que se agoten. Las entradas se compran en Passline.</p>
+    <div class="nv-tickets">
+      <div class="nv-ticket"><div class="nv-ticket__name">Preventa</div><div class="nv-ticket__price">$10.000</div><div class="nv-ticket__note">Cupos limitados</div></div>
+      <div class="nv-ticket"><div class="nv-ticket__name">General</div><div class="nv-ticket__price">$15.000</div></div>
+    </div>
+    <a class="btn nv-btn" href="https://www.passline.com/eventos/ecos-de-navidad" target="_blank" rel="noopener">Comprar en Passline</a>
+    <div class="nv-polas" aria-hidden="true">
+      <figure class="nv-pola" style="--rot:-4deg" data-drift="34"><img src="/assets/navidad/casa/pola-alex-cuadro.webp" width="720" height="720" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="nv-pola nv-pola--2" style="--rot:4deg" data-drift="-26"><img src="/assets/navidad/casa/pola-regalos.webp" width="720" height="720" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <!-- LLEGA A LA HORA + PREGUNTAS -->
+  <section class="nv-sec nv-sec--cream nv-in" id="detalles">
+    <h2 class="nv-title">Llega a la hora</h2>
+    <div class="faq nv-faq">
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>¿Por qué es importante llegar a la hora?</span>
+          <span class="faq-item__mark">+</span>
+        </button>
+        <p class="faq-item__answer">El programa es ajustado. Empezamos a las 18:00 hrs: llegando a la hora, todos disfrutamos la tarde completa.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>¿Dónde es?</span>
+          <span class="faq-item__mark">+</span>
+        </button>
+        <p class="faq-item__answer">En el Auditorio Sucre, Avda. Sucre 2513, esquina Pedro de Valdivia, Ñuñoa. <a href="https://www.google.com/maps/search/?api=1&query=Auditorio+Sucre+Avenida+Sucre+2513+%C3%91u%C3%B1oa" target="_blank" rel="noopener">Ver en el mapa</a>.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>¿Dónde compro mis entradas?</span>
+          <span class="faq-item__mark">+</span>
+        </button>
+        <p class="faq-item__answer">En Passline, en <a href="https://www.passline.com/eventos/ecos-de-navidad" target="_blank" rel="noopener">passline.com/eventos/ecos-de-navidad</a>. El link también está en la bio de Instagram @ecosdelacasa.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>¿Hay estacionamiento?</span>
+          <span class="faq-item__mark">+</span>
+        </button>
+        <p class="faq-item__answer">El lugar no cuenta con estacionamiento propio, pero hay estacionamientos cercanos.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>¿Habrá algo más que el concierto?</span>
+          <span class="faq-item__mark">+</span>
+        </button>
+        <p class="faq-item__answer">Sí, habrá stands de emprendimientos para que encuentres un regalo especial.</p>
+      </div>
+    </div>
+    <div class="nv-polas nv-polas--solo" aria-hidden="true">
+      <figure class="nv-pola" style="--rot:3deg" data-drift="30"><img src="/assets/navidad/casa/pola-tele.webp" width="720" height="720" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+  </section>
+
+  <footer class="nv-footer">
+    <div class="nv-footer__brand">Ecos de la Casa</div>
+    <div>© 2026 Ecos de la Casa · <a href="/">Volver al sitio</a></div>
+  </footer>
+
+  <script src="/js/script.js?v=1793805200"></script>
+  <script src="/navidad/navidad.js?v=16"></script>
+</body>
+</html>

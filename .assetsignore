@@ -9,3 +9,5 @@ wrangler.staging.jsonc
 .DS_Store
 ._*
 node_modules
+navidad-mood.html
+css/tema-navidad.css

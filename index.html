@@ -18,31 +18,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=1788664464">
+<link rel="stylesheet" href="css/style.css?v=1794030000">
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
+  <!-- HERO: banner de Ecos de Navidad (arte en assets/navidad, ver css .hero--banner) -->
+  <section class="hero hero--banner" id="hero">
     <div class="hero__bg" data-parallax="hero">
-      <div class="hero__bg-slide is-active" style="background-image: url('assets/hero/hero-01.jpg')"></div>
-      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-02.jpg')"></div>
-      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-03.jpg')"></div>
-      <div class="hero__bg-slide" style="background-image: url('assets/hero/hero-04.jpg')"></div>
-      <div class="hero__bg-gradient"></div>
+      <div class="hero__bg-slide is-active"></div>
     </div>
     <div class="hero__shade"></div>
-
-    <div class="hero__topbar">
-      <div class="hero__brand">Ecos de la Casa <span>— Sesión 01</span></div>
-      <a class="link-underline" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Síguenos para la Sesión 02</a>
-    </div>
+    <a class="hero__link" href="/navidad/" aria-label="Ver Ecos de Navidad, sábado 5 de diciembre"></a>
 
     <div class="hero__content">
-      <h1 class="hero__title split-words">Ecos<br>de la<br>Casa</h1>
+      <h1 class="visually-hidden">Ecos de Navidad, un especial de Ecos de la Casa</h1>
 
       <div class="hero__footer">
-        <a class="btn btn--vivid" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Síguenos para la Sesión 02</a>
+        <div class="hero__actions">
+          <a class="btn btn--vivid" href="https://www.passline.com/eventos/ecos-de-navidad" target="_blank" rel="noopener">Comprar entrada</a>
+          <a class="btn btn--outline" href="/navidad/">Conocer más</a>
+        </div>
+        <a class="link-underline hero__more" href="#porque">Ver Ecos de la Casa ↓</a>
+        <div class="hero__datetime">Sábado 5 de diciembre, 18:00 hrs<br>Auditorio Sucre, Ñuñoa</div>
       </div>
     </div>
   </section>
@@ -300,7 +297,7 @@
 
     <div class="cta__footer">
       <div class="tickets stagger-item">
-        <p class="cta__teaser-text">Sesión 02 — fecha por confirmar.</p>
+        <p class="cta__teaser-text">Próximo encuentro: <a href="/navidad/">Ecos de Navidad, sábado 5 de diciembre</a>.</p>
       </div>
     </div>
   </section>
@@ -314,7 +311,7 @@
     </div>
   </footer>
 
-  <a class="floating-cta" id="floatingCta" href="https://www.instagram.com/ecosdelacasa/" target="_blank" rel="noopener">Sesión 02: entérate primero</a>
+  <a class="floating-cta" id="floatingCta" href="/navidad/">Ecos de Navidad →</a>
 
   <!-- LIGHTBOX GALERÍA ÚLTIMA SESIÓN -->
   <div class="lightbox" id="sessionLightbox">
@@ -331,7 +328,7 @@
     </div>
   </div>
 
-  <script src="js/script.js?v=1788552319"></script>
+  <script src="js/script.js?v=1793668134"></script>
   <script src="js/animations.js?v=1788546222"></script>
 </body>
 </html>

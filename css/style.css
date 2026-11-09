@@ -227,6 +227,31 @@ a { color: inherit; }
   text-align: right;
 }
 
+/* Banner de evento: todo el hero lleva a la landing del evento */
+.hero__link { position: absolute; inset: 0; z-index: 1; }
+.hero--banner .hero__content { pointer-events: none; }
+.hero--banner .hero__content a { pointer-events: auto; }
+.hero--banner .hero__bg-slide {
+  background-image: url('/assets/navidad/banner-vertical.jpg');
+  background-size: 100% auto;
+  background-position: top center;
+}
+.hero--banner .hero__bg { inset: 0; background-color: #1c0d09; }
+@media (min-width: 700px) {
+  .hero--banner .hero__bg-slide { background-image: url('/assets/navidad/banner-desktop.jpg'); background-size: cover; background-position: center; }
+}
+.hero--banner .hero__shade { background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, transparent 38%); }
+.hero--banner .hero__footer { align-items: center; }
+.hero--banner .hero__more { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; pointer-events: auto; }
+@media (max-width: 699px) {
+  .hero--banner .hero__datetime { display: none; }
+  .hero--banner .hero__footer { flex-direction: column; align-items: stretch; text-align: center; gap: 16px; }
+  .hero--banner .hero__actions { flex-direction: column; }
+  .hero--banner .hero__actions .btn { text-align: center; justify-content: center; }
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__actions .btn { margin-top: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; }
+
 /* ===== Porqué ===== */
 .statement {
   font-family: var(--font-display);
@@ -653,6 +678,7 @@ a { color: inherit; }
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 6px;
 }
+.cta__teaser-text a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 
 /* ===== Footer ===== */
 .footer {
@@ -998,3 +1024,15 @@ a { color: inherit; }
     padding-bottom: 96px;
   }
 }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Botones de Ecos de Navidad (banner y landing): verde pino en vez del naranja del sitio */
+.hero--banner .btn--vivid,
+.nv-actions .btn--vivid { background: #2B5743; border-color: #2B5743; color: #FFFDFC; }
+.hero--banner .btn--vivid:hover,
+.nv-actions .btn--vivid:hover { background: #1F4132; border-color: #1F4132; }
+.hero--banner .btn--outline,
+.nv-actions .btn--outline { background: rgba(20, 8, 4, 0.35); border-color: rgba(255, 253, 252, 0.85); color: #FFFDFC; }
+.hero--banner .btn--outline:hover,
+.nv-actions .btn--outline:hover { background: #2B5743; border-color: #2B5743; }
